@@ -7,12 +7,6 @@ $url = parse_url(getenv("DATABASE_URL"));
 //heroku
 if($url["path"] != ""){
     
-
-    $host = $url["host"];
-    $username = $url["user"];
-    $password = $url["pass"];
-    $database = substr($url["path"], 1);
-
     $pgsql = [
         'driver'   => 'pgsql',
         'host'     =>$url["host"],
@@ -26,6 +20,7 @@ if($url["path"] != ""){
 
     $connection ='pgsql';
 
+//local
 }else{
     $pgsql = [
         'driver' => 'pgsql',
