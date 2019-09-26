@@ -31,17 +31,21 @@ class PostsController extends Controller
     {
         $data = request()->validate([
             'caption' => 'required',
-            'image' => ['required', 'image']
+            'image' => ['required', 'image'],
         ]);
         
+        /*
         $imagePath = request('image')->store('uploads', 'public');
 
         $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
         $image->save();
+        */
+
+        $image64 = base64_encode(file_get_contents(request('image')->path()));
 
         auth()->user()->posts()->create([
             'caption' => $data['caption'],
-            'image' => $imagePath,
+            'image64' => $image64,
         ]);
         
         return  redirect('/profile/' . auth()->user()->id);

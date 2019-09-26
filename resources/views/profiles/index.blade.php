@@ -4,9 +4,9 @@
 <div class="container">
    <div class="row">
         <div class="col-3 p-5">
-            <img src="{{ $user->profile->profileImage() }}" 
+            <img  
             class="rounded-circle w-100"
-            style=""
+            src="{{ $user->profile->profileImage() }}"
             alt="">
         </div>
         <div class="col-9 pt-5">
@@ -45,7 +45,7 @@
     <div class="row pt-5">
         @foreach($user->posts as $post)
             <div class="col-4 pb-4">
-                <a href="/p/{{ $post->id }}"><img src="/storage/{{ $post->image }}" class="w-100"></a>
+                <a href="/p/{{ $post->id }}"><img src="data:image/png;base64,{{ $post->image64 }}" style="width: 350px; height: 350px;"></a>
             </div>
         @endforeach
     </div>

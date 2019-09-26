@@ -4,11 +4,11 @@
 <div class="container">
     <div class="row">
         <div class="col-8">
-            <img src="/storage/{{ $post->image }}" class="w-100">
+            <img src="data:image/png;base64,{{ $post->image64 }}" class="w-100">
         </div>
         <div class="col-4">
             <div>
-                
+            
                 <div class="d-flex align-items-center">
                         <div class="pr-3">
                             <a href="/profile/{{ $post->user->id }}">
@@ -23,8 +23,6 @@
                             <a href="/profile/{{ $post->user->id }}" class="font-weight-bold text-dark">
                                 {{ $post->user->username}}
                             </a>
-
-                            <a href="#" class="pl-3">Follow</a>
                         </div>
                 </div>
 

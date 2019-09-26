@@ -12,9 +12,9 @@ class Profile extends Model
     public function profileImage(Type $var = null)
     {
 
-        $imagePath = ($this->image) ? $this->image : 'profile/noimage.png';
+        $image = ($this->image64) ? "data:image/png;base64," . $this->image64 : '/png/noimage.png';
 
-        return '/storage/' .  $imagePath;
+        return $image;
     }
 
     public function user()
