@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Str;
 
-$environment = "local";
+$url = parse_url(getenv("DATABASE_URL"));
 
-if($environment == "heroku"){
-    $url = parse_url(getenv("DATABASE_URL"));
-
+//heroku
+if($url["path"] != ""){
+   
     $host = $url["host"];
     $username = $url["user"];
     $password = $url["pass"];
@@ -23,6 +23,7 @@ if($environment == "heroku"){
         'schema'   => 'public'
     ];
 
+//local
 }else{
     $pgsql = [
         'driver' => 'pgsql',
