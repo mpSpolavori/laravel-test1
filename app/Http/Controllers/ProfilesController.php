@@ -53,11 +53,12 @@ class ProfilesController extends Controller
         {
             
             $imagePath = request('image')->store('profile', 'public');
+            print_r($imagePath);die;
+            print_r(public_path("storage/{$imagePath}"));
             print_r(file_get_contents(public_path("storage/{$imagePath}")));die;
+            
+            
             //Image::make(file_get_contents())->save($path);
-
-            print_r($imagePath);
-            print_r(public_path("storage/{$imagePath}"));die;
 
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
             $image->save();
