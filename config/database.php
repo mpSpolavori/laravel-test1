@@ -2,18 +2,11 @@
 
 use Illuminate\Support\Str;
 
-
 $url = parse_url(getenv("DATABASE_URL"));
 
-$host = $url["host"];
-$username = $url["user"];
-$password = $url["pass"];
-$database = substr($url["path"], 1);
-/*
-$environment = "heroku";
-
-if($environment == "heroku"){
-    $url = parse_url(getenv("DATABASE_URL"));
+//heroku
+if($url["path"] != ""){
+    
 
     $host = $url["host"];
     $username = $url["user"];
@@ -31,6 +24,8 @@ if($environment == "heroku"){
         'schema'   => 'public'
     ];
 
+    $connection ='pgsql';
+
 }else{
     $pgsql = [
         'driver' => 'pgsql',
@@ -46,8 +41,10 @@ if($environment == "heroku"){
         'schema' => 'public',
         'sslmode' => 'prefer',
     ];
+
+    $connection ='mysql';
 }
-*/
+
 
 return [
 
@@ -62,8 +59,9 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    //'default' => env('DB_CONNECTION', 'mysql'),
     //'default' => env('DB_CONNECTION', 'pgsql'),
+    'default' => env('DB_CONNECTION', $connection),
 
     /*
     |--------------------------------------------------------------------------
@@ -124,7 +122,7 @@ return [
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ],*/
+        ],
         //HEROKU
        'pgsql' => [
             'driver'   => 'pgsql',
@@ -135,8 +133,8 @@ return [
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
-        ],
-        //'pgsql' => $pgsql,
+        ],*/
+        'pgsql' => $pgsql,
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
