@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     @foreach($posts as $post)
-        <div class="row">
+        <div class="row p-2">
             <div class="col-8">
                 <img src="/storage/{{ $post->image }}" class="w-100">
             </div>
