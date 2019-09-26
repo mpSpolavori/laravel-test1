@@ -38,17 +38,33 @@ class ProfilesController extends Controller
             'image' => '',
         ]);
         
-        if(request('image'))
+/*        if(request('image'))
         {
             $imagePath = request('image')->store('profile', 'public');
-        print_r($imagePath);
-        print_r(public_path("storage/{$imagePath}"));die;
+
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+            $image->save();
+
+            $arrayImg = [ 'image' => $imagePath ];
+        }*/
+        
+
+        if(request('image'))
+        {
+            
+            $imagePath = request('image')->store('profile', 'public');
+            print_r(file_get_contents(public_path("storage/{$imagePath}")));die;
+            //Image::make(file_get_contents())->save($path);
+
+            print_r($imagePath);
+            print_r(public_path("storage/{$imagePath}"));die;
+
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
             $image->save();
 
             $arrayImg = [ 'image' => $imagePath ];
         }
-        
+
         auth()->user()->profile->update(array_merge(
             $data, 
             $arrayImg ?? [],
