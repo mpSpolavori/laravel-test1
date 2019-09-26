@@ -6,7 +6,7 @@ $url = parse_url(getenv("DATABASE_URL"));
 
 //heroku
 if($url["path"] != ""){
-   echo 'a;'
+   echo 'a;';
     $pgsql = [
         'driver'   => 'pgsql',
         'host'     => $url["host"],
