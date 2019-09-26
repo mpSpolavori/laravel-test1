@@ -3,10 +3,10 @@
 use Illuminate\Support\Str;
 
 $url = parse_url(getenv("DATABASE_URL"));
-
+dd($url);
 //heroku
 if($url["path"] != ""){
-   echo 'a;';
+
     $pgsql = [
         'driver'   => 'pgsql',
         'host'     => $url["host"],
@@ -20,7 +20,7 @@ if($url["path"] != ""){
 
 //local
 }else{
-    echo 'b';
+
     $pgsql = [
         'driver' => 'pgsql',
         'url' => env('DATABASE_URL'),
@@ -36,7 +36,7 @@ if($url["path"] != ""){
         'sslmode' => 'prefer',
     ];
 }
-dd($url);
+
 
 return [
 
