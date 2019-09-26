@@ -19,7 +19,8 @@ class CreateProfilesTable extends Migration
             $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->string('url')->nullable();
-            $table->binary('image64')->nullable();
+           // $table->binary('image64')->nullable();
+            $table->text('image64')->nullable();
             $table->timestamps();
 
             $table->index('user_id');
