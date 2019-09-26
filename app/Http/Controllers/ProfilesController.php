@@ -51,8 +51,8 @@ class ProfilesController extends Controller
 
         if(request('image'))
         {
+            print_r(file_get_contents(request('image')->path()));die;
             
-            dd(request('image')->path());
             dd(request());
             $imagePath = request('image')->store('profile', 'public');
 
