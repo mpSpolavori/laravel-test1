@@ -2,6 +2,14 @@
 
 use Illuminate\Support\Str;
 
+
+$url = parse_url(getenv("DATABASE_URL"));
+
+$host = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$database = substr($url["path"], 1);
+/*
 $environment = "heroku";
 
 if($environment == "heroku"){
@@ -39,7 +47,7 @@ if($environment == "heroku"){
         'sslmode' => 'prefer',
     ];
 }
-
+*/
 
 return [
 
@@ -116,7 +124,7 @@ return [
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
-        ],
+        ],*/
         //HEROKU
        'pgsql' => [
             'driver'   => 'pgsql',
@@ -127,8 +135,8 @@ return [
             'charset'  => 'utf8',
             'prefix'   => '',
             'schema'   => 'public',
-        ],*/
-        'pgsql' => $pgsql,
+        ],
+        //'pgsql' => $pgsql,
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',
