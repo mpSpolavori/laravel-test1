@@ -3,7 +3,7 @@
 use Illuminate\Support\Str;
 
 $url = parse_url(getenv("DATABASE_URL"));
-dd($url);
+
 //heroku
 if($url["path"] != ""){
 
